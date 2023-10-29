@@ -1,0 +1,59 @@
+
+-- 1. Display all information in the tables EMP and DEPT:
+
+SELECT *FROM EMPLOYEES;
+SELECT *FROM DEPARTEMENTS; 
+
+-- 2. Display only the hire date and employee name for each employee
+
+SELECT HIRE_DATE,CONCAT(FIRST_NAME,LAST_NAME) 'NAME' FROM EMPLOYEES;
+
+-- 3. Display the ename concatenated with the job ID, separated by a comma and space, and name the column Employee and Title 
+
+SELECT CONCAT(EMPLOYEE_ID, FIRST_NAME,LAST_NAME) 'EMPLOYEE' FROM EMPLOYEES;
+
+-- 4. Display the hire date, name and department number for all Marketing . 
+
+SELECT HIRE_DATE,CONCAT(FIRST_NAME,LAST_NAME) 'NAME', DEPARTMENT_ID FROM EMPLOYEES;
+
+-- 5. Create a query to display all the data from the EMP table. Separate each column by a comma. Name the column THE OUTPUT 
+
+SELECT EMPLOYEES.*,
+CONCAT( EMPLOYEE_ID,',',FIRST_NAME,',',LAST_NAME,',', HIRE_DATE,',', JOB_ID,',', SALARY,',', MANAGER_ID,',', DEPARTMENT_ID,',',EMAIL) 
+'THE OUTPUT'
+FROM EMPLOYEES;
+
+-- 6. Display the names and salaries of all employees with a salary greater than 2000
+
+SELECT CONCAT (FIRST_NAME,LAST_NAME),SALARY FROM EMPLOYEES WHERE SALARY > 20000;
+
+-- 7. Display the names and dates of employees with the column headers "Name" and "Start Date" 
+
+SELECT CONCAT ( FIRST_NAME,LAST_NAME) 'NAME' , HIRE_DATE 'START DATE' FROM EMPLOYEES;
+
+-- 8. Display the names and hire dates of all employees in the order they were hired. 
+
+SELECT CONCAT(FIRST_NAME,LAST_NAME) 'NAME' ,HIRE_DATE FROM EMPLOYEES
+ORDER BY HIRE_DATE desc;
+
+-- 9. Display the names and salaries of all employees in reverse salary order. 
+
+SELECT CONCAT (FIRST_NAME,LAST_NAME) 'NAME' ,SALARY FROM EMPLOYEES
+ORDER BY SALARY DESC;
+
+-- 10. Display 'ename" and "deptno" who are all earned commission and display salary in reverse order. 
+
+SELECT CONCAT(FIRST_NAME,LAST_NAME) 'NAME' ,DEPARTMENT_ID ,SALARY FROM EMPLOYEES
+ORDER BY SALARY DESC;
+
+-- 11. Display the last name and job title of all employees who do not have a manager 
+
+SELECT LAST_NAME,JOB_ID FROM EMPLOYEES WHERE MANAGER_ID = NULL;
+
+-- 12. Display the last name, job, and salary for all employees whose job is sales representative or stock clerk and whose salary is not equal to $2,500, $3,500, or $5,000
+-- In My case 
+-- SALES REPRESENTATIVE = 16
+-- STOCK CLERK = 18
+
+SELECT LAST_NAME ,JOB_ID,SALARY FROM EMPLOYEES WHERE  JOB_ID = 16 OR 18 AND SALARY != 25000 OR 20000 OR 35000;
+
